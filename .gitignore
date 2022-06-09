@@ -1,0 +1,4 @@
+.DS_Store
+apkOutput
+apkTemp
+assets/key/*.jks

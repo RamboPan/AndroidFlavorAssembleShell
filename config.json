@@ -1,0 +1,40 @@
+{
+    "projectDir":"/Users/rambopan/Projects/xxx", 
+    "gitRemote":"upstream", 
+    "gitBranch":"xxx", 
+    "buildFavor":[
+        "base xiaomi huawei vivo oppo",
+        "ttest online"
+    ],
+    "mainChannel":{
+        "xiaomi":"book_xiaomi",
+        "huawei":"book_huawei",
+        "vivo":"book_vivo",
+        "oppo":"book_oppo"
+    },
+    "baseChannel":"book_360 book_baidu",
+    "key":{
+        "keyAlias":"xxx",
+        "keyPassword":"xxx",
+        "storePassword":"xxx"
+    },
+    "notifyUrl":"https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx",
+    "pugongying":{
+        "url":"https://upload.pgyer.com/apiv1/app/upload",
+        "uKey":"xxx",
+        "apiKey":"xxx"
+    },
+    "uploadZipUrl":"xxx",
+    "shield":{
+        "target":"aijiami",
+        "aijiami":{
+            "userName":"xxx",
+            "type":"xxx",
+            "so":"xxx"
+        },
+        "jiagubao":{
+            "userName":"xxx",
+            "password":"xxx"
+        }
+    }
+}
