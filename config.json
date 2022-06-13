@@ -1,32 +1,31 @@
 {
-    "projectDir":"/Users/rambopan/Projects/xxx", 
-    "gitRemote":"upstream", 
-    "gitBranch":"xxx", 
+    "projectDir":"/Users/rambopan/Desktop/AndroidFlavorAssembleShell/Sample", 
+    "gitRemote":"", 
+    "gitBranch":"", 
     "buildFlavor":[
-        "base xiaomi huawei vivo oppo",
+        "base huawei oppo",
         "ttest online"
     ],
     "mainChannel":{
-        "xiaomi":"book_xiaomi",
-        "huawei":"book_huawei",
-        "vivo":"book_vivo",
-        "oppo":"book_oppo"
+        "huawei":"",
+        "vivo":"",
+        "oppo":""
     },
-    "baseChannel":"book_360 book_baidu",
+    "baseChannel":"",
     "key":{
         "keyAlias":"xxx",
         "keyPassword":"xxx",
         "storePassword":"xxx"
     },
-    "notifyUrl":"https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx",
+    "notifyUrl":"",
     "pugongying":{
-        "url":"https://upload.pgyer.com/apiv1/app/upload",
-        "uKey":"xxx",
-        "apiKey":"xxx"
+        "url":"",
+        "uKey":"",
+        "apiKey":""
     },
-    "uploadZipUrl":"xxx",
+    "uploadZipUrl":"",
     "shield":{
-        "target":"aijiami",
+        "target":"",
         "aijiami":{
             "userName":"xxx",
             "type":"xxx",
