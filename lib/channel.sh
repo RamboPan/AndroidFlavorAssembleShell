@@ -21,10 +21,13 @@ function funAddChannel {
         done
     fi
 
-    # 列表循环生成对应渠道包
-    for oneChannel in ${channelArray[@]};do
-        java -jar $vasdollyPath put -c $oneChannel $1 $2 
-    done
-    # 删除原包
-    rm $apkName
+    # 如果没有检测到风味设置，则不走 VasDolly
+    if [[ ${channelArray[0]} != "" ]];then
+        # 列表循环生成对应渠道包
+        for oneChannel in ${channelArray[@]};do
+            java -jar $vasdollyPath put -c $oneChannel $1 $2 
+        done
+        # 删除原包
+        rm $apkName
+    fi
 }

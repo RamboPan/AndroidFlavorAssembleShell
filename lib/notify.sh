@@ -2,9 +2,14 @@
 #!/bin/bash
 
 function funNotifyText {
-    curl -X POST -H "Content-Type: application/json" \
+    # 如果是没有检测到通知地址，这里直接输出到控制台
+    if [[ $notifyUrl == "" ]];then
+        funLogInfo $*
+    else 
+        curl -X POST -H "Content-Type: application/json" \
         -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"$*\"}}" \
-   $notifyUrl
+        $notifyUrl
+    fi
 }
 
 function funNotifyImage {

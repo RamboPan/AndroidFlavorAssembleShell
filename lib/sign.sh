@@ -14,5 +14,7 @@ function funSign {
     local storePassword=$(echo $keyConfig | jq ".storePassword" | sed 's/\"//g')
     
     java -jar $apksignerPath sign --ks $keyPath --ks-key-alias $keyAlias --ks-pass pass:$storePassword --key-pass pass:$keyPassword --out $2 $1
-    mv $2 $1
+    if [ 0 -eq $? ];then
+        mv $2 $1
+    fi
 }

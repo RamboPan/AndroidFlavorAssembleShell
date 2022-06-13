@@ -12,10 +12,14 @@ function funSheildFromAijiami {
     local so=$(echo $aijiamiConfig | jq ".so" | sed 's/\"//g')
     local aijiamiPath="$curDir/assets/shield/aijiami/encryptiontool-1.2_forsoapi_20180602.jar"
     java -jar $aijiamiPath $uName $1 $2 $so $type
-    # todo 异常处理
-    rm $apkName
+    # 需要处理下，未加固成功的情况
     local tempShieldApk=$(find $2 -maxdepth 1 -name "*.apk")
-    mv $tempShieldApk $apkName
+    if [[ $(basename $tempShieldApk) == $(basename $apkName) ]];then
+        funLogInfo "【警告】爱加密未调用成功，暂不进行应用加固"
+    else 
+        rm $apkName
+        mv $tempShieldApk $apkName
+    fi
 }
 
 function testShield {
