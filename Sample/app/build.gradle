@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "rambopan.example.sample"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        myconfig {
+            storeFile file('shellTestKey.jks')
+            keyAlias 'shellTestKey'
+            keyPassword 'shellTestKey'
+            storePassword 'shellTestKey'
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myconfig
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    productFlavors {
+        flavorDimensions 'channel', 'host'
+
+        // channel的值
+        huawei {
+            dimension 'channel'
+        }
+
+        oppo {
+            dimension 'channel'
+        }
+
+        base {
+            dimension 'channel'
+        }
+
+        // host的值
+        online {
+            dimension 'host'
+            // 在 BuildConfig 中加入一个变量 HOST_ENV = "https://online.api.com"
+            buildConfigField('String', 'HOST_ENV', '"https://online.api.com"')
+        }
+
+        ttest { // 这不能直接使用 test，所以多加了一个 t
+            dimension 'host'
+            // 在 BuildConfig 中加入一个变量 HOST_ENV = "https://test.api.com"
+            buildConfigField('String', 'HOST_ENV', '"https://test.api.com"')
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}

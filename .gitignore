@@ -2,3 +2,5 @@
 apkOutput
 apkTemp
 assets/key/*.jks
+Sample/.gradle
+Sample/.idea
