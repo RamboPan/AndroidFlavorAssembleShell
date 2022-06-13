@@ -7,22 +7,22 @@ function funAssembleApk {
     # 依次执行打包任务
     for cmd in ${selectCmdArray[@]};do         
         local exCmd=$(echo ${cmd} | sed "s/\_//g")
-        local oneCmdStartTimes=$(curTimeSecond)
+        local oneCmdStartTimes=$(funCurTimeSecond)
         funNotifyAssembleStart $oneCmdStartTimes $cmd
         $gradleCmd $module:$am$exCmd
         if [ 0 -eq $? ];then
             # 打包顺利，找到对应 apk 判断是否是 release 包，
             # 是的话进行 加固，对齐，再签名，加渠道
             local dirArray=($(echo $cmd | tr '\_' ' '))
-            local blurFavorDir=$(funFirstLower ${dirArray[0]})
+            local blurFlavorDir=$(funFirstLower ${dirArray[0]})
             local blurTypeDir=$(funFirstLower ${dirArray[1]})
-            local blurPath=$asOutDir$blurFavorDir/$blurTypeDir
+            local blurPath=$asOutDir$blurFlavorDir/$blurTypeDir
             apkPath=$(find $blurPath -name "*.apk")
             funNotifyAssembleSuccess $oneCmdStartTimes $cmd $apkPath
             {
             # release 包会进行加入渠道、加固等操作
             if [[ $blurTypeDir =~ "release" ]] ;then
-                local releaseStartTimeS=$(curTimeSecond)
+                local releaseStartTimeS=$(funCurTimeSecond)
                 funNotifyReleaseOperateStart $releaseStartTimeS $cmd $apkPath
                 # 多进程的话，每个任务还是需要单独用一个文件夹
                 local tempCmdPath="$tempApkDir$exCmd/"

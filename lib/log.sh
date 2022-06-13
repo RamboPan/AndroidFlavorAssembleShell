@@ -7,7 +7,7 @@ arrowTag=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 # 如果不传入参数，则默认取当前时间戳
 # 如果传入的是 1 个参数(这里只支持传入秒)，则用第一个参数生成时间戳
 # 如果传入的是 2 个参数(两个参数都传入秒)，则使用时间差生成时间戳，参数 2 晚于参数 1
-function timeStamp {
+function funTimeStamp {
     case $# in
         0)
             echo $(date '+%Y-%m-%d %H:%M:%S');;
@@ -26,25 +26,25 @@ function timeStamp {
 }
 
 # 当前时间秒
-function curTimeSecond {
+function funCurTimeSecond {
     echo `date '+%s'`
 }
 
 # 获取从上次时间(s)到现在时间的时间戳
-function intervalFromSecondStamp {
+function funIntervalFromSecondStamp {
     if [ $# -eq 1 ];then
-        echo $(timeStamp $1 $(curTimeSecond))
+        echo $(funTimeStamp $1 $(funCurTimeSecond))
     fi
 }
 
 # 分割线
-function logDivide {
+function funLogDivide {
     echo $arrowTag
 }
 
 # 打印日志
 function funLogInfo {
-    echo -e "$(timeStamp); $*"
+    echo -e "$(funTimeStamp); $*"
 }
 
 # 打印配置的信息

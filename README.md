@@ -120,7 +120,7 @@ brew install jq
     //需要打包的分支
     "gitBranch":"xxx", 
     //风味纬度,与数组长度一致，每项中的配置用空格分割
-    "buildFavor":[
+    "buildFlavor":[
         "base xiaomi huawei vivo oppo",
         "ttest online"
     ],

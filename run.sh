@@ -15,7 +15,7 @@
 . ./lib/config.sh
 . ./lib/log.sh
 . ./lib/update.sh
-. ./lib/favor.sh
+. ./lib/flavor.sh
 . ./lib/filter.sh
 . ./lib/assemble.sh
 . ./lib/util.sh
@@ -52,7 +52,7 @@ cd $projectDir
 funUpdateProject $configJson
 
 # 获取所有风味打包类型
-list=$(funLoadFavor $configJson)
+list=$(funLoadFlavor $configJson)
 
 # 输出选择
 funLogInfo ">>> 检测到的可执行任务如下 >>> "
@@ -104,7 +104,7 @@ else
 fi
 
 # 开始打包，记录下开始时间，拼凑下所有任务名称
-startTimeS=$(curTimeSecond)
+startTimeS=$(funCurTimeSecond)
 arrayString=$(funArrayToString ${selectCmdArray[@]})
 funNotifyRunStartInfo $startTimeS $arrayString $isUploadZipAllRet
 funAssembleApk
@@ -113,7 +113,7 @@ funAssembleApk
 if [[ 0 -eq $? ]];then
     # 如果最后需要压缩上传，单独处理一下
     if [[ 0 -eq $isUploadZipAll ]];then
-        zipName=$(echo $(timeStamp) | sed "s/\ /\_/g;s/\-//g;s/\://g;")_apks.zip
+        zipName=$(echo $(funTimeStamp) | sed "s/\ /\_/g;s/\-//g;s/\://g;")_apks.zip
         zip -r $finalApkDir$zipName $finalApkDir -i *.apk
         #Todo_RamboPan 需要考虑如何把压缩的文件上传到指定位置,以及是否删除掉所有产生的 apk
         cd $finalApkDir
@@ -121,9 +121,9 @@ if [[ 0 -eq $? ]];then
     fi
     
     # 处理下失败的情况
-    funLogInfo ">>>>>>>>>>> 【通知】$user 于 $(timeStamp $startTimeS) 时发起打包任务,包括【${arrayString}】执行完成，共耗时 $(intervalFromSecondStamp $startTimeS). >>>>>>>>>>"
+    funLogInfo ">>>>>>>>>>> 【通知】$user 于 $(funTimeStamp $startTimeS) 时发起打包任务,包括【${arrayString}】执行完成，共耗时 $(funIntervalFromSecondStamp $startTimeS). >>>>>>>>>>"
     funNotifyRunAllSuccess $startTimeS $arrayString
 else 
-    funLogInfo ">>>>>>>>>>> 【警告】$user 于 $(timeStamp $startTimeS) 时发起打包任务,包括【${arrayString}】执行失败，请检查. >>>>>>>>>>>"
+    funLogInfo ">>>>>>>>>>> 【警告】$user 于 $(funTimeStamp $startTimeS) 时发起打包任务,包括【${arrayString}】执行失败，请检查. >>>>>>>>>>>"
     funNotifyRunAllFail $startTimeS $arrayString
 fi

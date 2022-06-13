@@ -3,7 +3,7 @@
 # 上传单个 apk 到蒲公英
 # $1 为文件地址
 function funUploadApk2Pugongying {
-    local updaloadTimeS=$(curTimeSecond)
+    local updaloadTimeS=$(funCurTimeSecond)
     funNotifyUploadStart $1
     local response=$(curl -F 'file=@'$1'' -F 'uKey='$pgyUKey'' -F '_api_key='$pgyApiKey'' $pgyUrl --progress-bar)
     local code=$(echo $response | jq ".code" | sed "s/\"//g")

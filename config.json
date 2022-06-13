@@ -2,7 +2,7 @@
     "projectDir":"/Users/rambopan/Projects/xxx", 
     "gitRemote":"upstream", 
     "gitBranch":"xxx", 
-    "buildFavor":[
+    "buildFlavor":[
         "base xiaomi huawei vivo oppo",
         "ttest online"
     ],
