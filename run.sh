@@ -3,7 +3,7 @@
 # AndroidFlavorAssembleShell
 # Android 风味打包脚本
 # Author:RamboPan
-# Version:2.0
+# Version:2.1
 # Github:https://github.com/RamboPan/AndroidFlavorAssembleShell
 
 # 这里需要跳转下脚本目录，这里的示范是 mini 上位置。

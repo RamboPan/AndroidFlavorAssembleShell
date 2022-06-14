@@ -1,5 +1,6 @@
 # AndroidFlavorAssembleShell / Android 风味打包脚本
 
+<img src="/docFiles/images/version.png" width="160px" height="32px">
 
 ### 前言
 
